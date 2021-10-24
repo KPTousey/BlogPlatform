@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BlogPlatform.Models.Content>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Blog List</h2>
+
+<p>
+    <a asp-controller="Content" asp-action="Create">Create New</a>
+</p>
+
+
+        @foreach (var item in Model)
+        {
+<div class="blog-container">
+    <table class="table">
+        <tr>
+            <td>
+                <strong><em>Title:</em></strong> @Html.DisplayFor(modelItem => item.Title)
+            </td>
+
+            <td>
+                <strong><em>Author:</em></strong> @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                <strong><em>Publish Date:</em></strong> @Html.DisplayFor(modelItem => item.PublishDate)
+            </td>
+            <td>
+                <strong><em>Category:</em></strong> @Html.DisplayFor(modelItem => item.category.Name)
+            </td>
+            <td>
+                <a asp-controller="Content" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-controller="Content" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+
+
+
+
+        </tr>
+
+    </table>
+    <p>POST: @Html.DisplayFor(modelItem => item.Body)</p>
+</div>
+
+        }
+    
