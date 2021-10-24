@@ -1,6 +1,7 @@
 ﻿using BlogPlatform.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BlogPlatform.Controllers
@@ -23,6 +24,7 @@ namespace BlogPlatform.Controllers
 		// get - create
 		public IActionResult Create()
 		{
+			ViewBag.Categories = _db.Categories.ToList();
 			return View();
 		}
 
@@ -30,9 +32,10 @@ namespace BlogPlatform.Controllers
 		[HttpPost]
 		public IActionResult Create(Content content)
 		{
+			ViewBag.Categories = _db.Categories.ToList();
 			content.PublishDate = DateTime.Now;
 			_db.Add(content);
-			_db.SaveChangesAsync();
+			_db.SaveChanges();
 			//return View();
 			return RedirectToAction("Index", "Home");
 		}
@@ -40,6 +43,7 @@ namespace BlogPlatform.Controllers
 		// get - edit
 		public IActionResult Edit(int? id)
 		{
+			ViewBag.Categories = _db.Categories.ToList();
 			var content = _db.Contents.Find(id);
 			return View(content);
 		}
@@ -47,8 +51,9 @@ namespace BlogPlatform.Controllers
 
 		// post - edit
 		[HttpPost]
-		public IActionResult Edit(int id, Content model)
+		public IActionResult Edit(Content model)
 		{
+			ViewBag.Categories = _db.Categories.ToList();
 			model.PublishDate = DateTime.Now;
 			_db.Update(model);
 			_db.SaveChanges();

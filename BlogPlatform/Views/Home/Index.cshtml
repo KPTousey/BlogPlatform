@@ -24,10 +24,10 @@
                 <strong><em>Author:</em></strong> @Html.DisplayFor(modelItem => item.Author)
             </td>
             <td>
-                <strong><em>Publish Date:</em></strong> @Html.DisplayFor(modelItem => item.PublishDate)
+                <strong><em>Publish Date:</em></strong> @item.PublishDate.ToString("MM/dd/yyyy")
             </td>
             <td>
-                <strong><em>Category:</em></strong> @Html.DisplayFor(modelItem => item.category.Name)
+                <strong><em>Category:</em></strong> @Html.DisplayFor(modelItem => item.Category.Name)
             </td>
             <td>
                 <a asp-controller="Content" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

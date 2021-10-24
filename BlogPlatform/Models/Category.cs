@@ -11,7 +11,7 @@ namespace BlogPlatform.Models
 
 		public string Name { get; set; }
 
-		public virtual List<Content> Content { get; set; }
+		public virtual List<Content> Contents { get; set; }
 
 	}
 }
